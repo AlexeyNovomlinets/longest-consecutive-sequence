@@ -1,7 +1,7 @@
 module.exports = function longestConsecutiveLength(array) {
   let hashTable = {},
       count = 1,
-      countMax = 1;
+      countMax = 0;
 
   if (array.length === 0) return 0;
   if (array.length === 1) return 1;
@@ -11,9 +11,9 @@ module.exports = function longestConsecutiveLength(array) {
   }
 
   for (let key in hashTable) {
-    if (hashTable[key] && hashTable[(parseInt(key) + 1 )]) count++;
+    if (hashTable[(parseInt(key) + 1 )]) count++;
     else {
-      if (count >= countMax) countMax = count;
+      if (count > countMax) countMax = count;
       count = 1;
     }
   }
